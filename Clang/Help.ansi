@@ -1,0 +1,46 @@
+[0m
+
+
+                    [34mCLANG Build Script[0m
+
+  This repository contains scripts for [35mpartially[0m automating the process of 
+  building Clang. There are some assumptions that are made about your 
+  environment.
+
+  1. That you have Visual Studio Community installed in the typical location    
+  2. That you have Git in your path. 
+
+
+                     [35mRunning the Script[0m
+
+Before running the scripts, you may want to edit the file installation 
+variables. The are in [35mCLangDefineEnvironmentVariables.cmd[0m. The variables
+include the temporary folder that will used for downloading the installations
+and the source URLs for the installations of Python and CMake, among a few 
+other settings. 
+
+Once you have reviewed and modified this file, begin by running the scripts
+[34mPart1.cmd[0m. This script will invoke an update to Visual studio to 
+ensure that it has the components that it needs and installing Python3. If you
+already have these items installed, you can skip these steps. 
+
+Next, close the command prompt in which you ran this script and open a new one.
+The new prompt will have environment variables that were set by the 
+installations. Run the script [32mPart2.cmd[0m.
+
+At this time, feel free to go out for lunch. This part is going to run for a 
+while. No further interaction should ne necessary. When this script completes,
+you should have a locally build copy of Clang.
+
+  You may want to ensure that your computer doesn't go to sleep.
+
+
+
+
+
+
+
+
+
+
+
