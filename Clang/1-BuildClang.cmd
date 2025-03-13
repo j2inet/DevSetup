@@ -9,8 +9,8 @@ git config core.autocrlf false
 mkdir build
 pushd build
 cmake -DLLVM_ENABLE_PROJECTS=clang -G "Visual Studio 17 2022" -A x64 -Thost=x64 ..\llvm
-cd tools\clang\tools\driver
-%MSBUILD_FULL_PATH%" clang.vcxproj /p:Configuration=Release
+"%MSBUILD_FULL_PATH%" ALL_BUILD.vcxproj /p:Configuration=Release
 mkdir %InstallRoot%\bin
-robocopy \build\Debug\bin %InstallRoot%\bin /MIR
-"%MSBUILD_FULL_PATH%" clang.vcxproj
+mkdir %InstallRoot%\lib
+robocopy Release\bin %InstallRoot%\bin /MIR
+robocopy Release\lib %InstallRoot%\lib /MIR

@@ -15,15 +15,15 @@ ECHO To manually install some other version, see https://cmake.org/download/
 ECHO.
 ECHO.
 TIMEOUT 8
-SET CMAKE_SOURCE_URL=https://github.com/Kitware/CMake/releases/download/v4.0.0-rc3/cmake-4.0.0-rc3-windows-x86_64.msi
-SET CMAKE_FILE_NAME=cmake-4.0.0-rc3-windows-x86_64.msi
-if not exist "%TempFolder%\%CMAKE_FILE_NAME%" (
-    powershell Invoke-WebRequest -Uri  "%CMAKE_SOURCE_URL%" -OutFile "%TempFolder%\%CMAKE_FILE_NAME%"
-    ECHO Installing CMAKE
-    start "%TempFolder%\%CMAKE_FILE_NAME%"
-    ECHO.
-    ECHO Once installation completes, return to this window and continue.
-    PAUSE
+if defined InstallCmake (
+    if not exist "%TempFolder%\%CMAKE_FILE_NAME%" (
+        powershell Invoke-WebRequest -Uri  "%CMAKE_SOURCE_URL%" -OutFile "%TempFolder%\%CMAKE_FILE_NAME%"
+        ECHO Installing CMAKE
+        start "%TempFolder%\%CMAKE_FILE_NAME%"
+        ECHO.
+        ECHO Once installation completes, return to this window and continue.
+        PAUSE
+    )
 )
 
 REM =========================
@@ -39,19 +39,21 @@ PAUSE
 CLS
 
 REM =========================
-if not exist "%TempFolder%\python-3.13.2-amd64.exe" (
-    ECHO Downloading Python3
-    powershell Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.13.2/python-3.13.2-amd64.exe" -OutFile "%TempFolder%\python-3.13.2-amd64.exe"
-    ECHO.
-    ECHO.
-    ECHO.
-    ECHO.
-    ECHO.
-    ECHO Install Python3. Once the installation completes, return to this window and press any key.
-    ECHO.
-    ECHO.
-    "%TempFolder%\python-3.13.2-amd64.exe"
-    PAUSE
+if defined InstallPython (
+    if not exist "%TempFolder%\python-3.13.2-amd64.exe" (
+        ECHO Downloading Python3
+        powershell Invoke-WebRequest -Uri "%PYTHON_URL%" -OutFile "%TempFolder%\python-3.13.2-amd64.exe"
+        ECHO.
+        ECHO.
+        ECHO.
+        ECHO.
+        ECHO.
+        ECHO Install Python3. Once the installation completes, return to this window and press any key.
+        ECHO.
+        ECHO.
+        "%TempFolder%\python-3.13.2-amd64.exe"
+        PAUSE
+    )
 )
 REM =========================
 CLS
