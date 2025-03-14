@@ -1,5 +1,5 @@
 mkdir build > nul
 pushd build
-cls && cmake -GNinja  -DMAKE_TOOLCHAIN_FILE=..\cmake_toolchain_clang.cmake ..
+cls && cmake -GNinja   ..
 ninja
 popd
