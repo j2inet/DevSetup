@@ -1,0 +1,10 @@
+﻿cmake_minimum_required(VERSION 3.31)
+
+set(CMAKE_C_COMPILER "clang.exe")
+set(CMAKE_CXX_COMPILER "clang++.exe")
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_SYSTEM_NAME Generic)
+set(CMAKE_BUILD_TYPE Release)
+project("HelloWorld" )
+enable_language(C CXX)
+add_executable ("HelloWorld.exe" "HelloWorld.cpp" "HelloWorld.h")

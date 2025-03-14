@@ -3,6 +3,19 @@ call CLangDefineEnvironmentVariables.cmd
 %InstallDrive%
 CD %InstallRoot%
 mkdir %TempFolder%
+
+if defined InstallNinja (
+    if not exist "_%NINJA_ROOT%" (
+        ECHO "Installing Ninja."
+        powershell Invoke-WebRequest -Uri  "%NINJA_URL%" -OutFile "%TempFolder%\%NINJA_FILE%"
+        ECHO "Making decompression location"
+        mkdir "%NINJA_ROOT%"
+        ECHO "Decompressing..."
+        powershell Expand-Archive -LiteralPath  "%TempFolder%\%NINJA_FILE%" -DestinationPath "%NINJA_ROOT%"
+        PAUSE
+    )
+)
+
 ECHO.
 ECHO.
 ECHO.

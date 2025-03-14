@@ -1,4 +1,5 @@
 @echo off
+set starttime=%date% %time%
 call CLangDefineEnvironmentVariables.cmd
 mkdir %InstallRoot%
 cd %InstallRoot%
@@ -14,3 +15,11 @@ mkdir %InstallRoot%\bin
 mkdir %InstallRoot%\lib
 robocopy Release\bin %InstallRoot%\bin /MIR
 robocopy Release\lib %InstallRoot%\lib /MIR
+SET endtime=%date% %time%
+
+ECHO.
+ECHO.
+ECHO Start time: %starttime%
+ECHO End time  : %endtime%
+ECHO.
+ECHO.
