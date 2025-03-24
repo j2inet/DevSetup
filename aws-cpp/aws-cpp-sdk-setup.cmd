@@ -1,4 +1,5 @@
 @ECHO OFF
+type ..\ansi\j2i-256.ans
 pushd
 SET startTime=%date% %time%
 set CloneDrive=c:
