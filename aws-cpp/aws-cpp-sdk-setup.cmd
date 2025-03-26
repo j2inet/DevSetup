@@ -1,11 +1,15 @@
 @ECHO OFF
-type ..\ansi\j2i-256.ans
+cls
 pushd
 SET startTime=%date% %time%
 set CloneDrive=c:
 set CloneFolder=%CloneDrive%\shares\projects\amazon
 set InstallDrive=c:
 set InstallFolder=%InstallDrive%\shares\projects\amazon\aws-cpp-sdk-lib
+
+
+type ..\ansi\j2i-256.ans
+
 
 ECHO For more information on this procedure, see https://docs.aws.amazon.com/sdk-for-cpp/
 pushd
