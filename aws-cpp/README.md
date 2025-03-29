@@ -111,11 +111,11 @@ With these added, you should now be able to compile and run the program.
 There is an actual program that I want to share. But the process of compiling the SDK was involved enough (and takes long enough) such that I thought it was worthy of its own post. I have also found that there are some others that have struggled to compile the SDK and have encountered challenges in figuring out how to link. This post also serves to help them out. The next time I mention the AWS C++ SDK, it will likely be to show an application for storing information on various systems to S3.
 
 
-Mastodon: [@j2inet@masto.ai][2]
-Instagram:[@j2inet][3]
-YouTube: [@j2inet][4]
-Telegram: [j2inet][6]
-Bluesky: [@j2i.net][5]
+* Mastodon: [@j2inet@masto.ai][2]
+* Instagram:[@j2inet][3]
+* YouTube: [@j2inet][4]
+* Telegram: [j2inet][6]
+* Bluesky: [@j2i.net][5]
 
 
 
