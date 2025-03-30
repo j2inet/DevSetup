@@ -1,3 +1,4 @@
+![hero](images/hero.png)
 # Compiling and Linking to the AWS C++ SDK
 
 Recently I was trying to work with the AWS C++ SDK. But I encountered problems with linking the .LIBs from the SDK to my project. Amazon provides instructions on compiling the SDK for various environments. I’m specifically am doing so on Windows with Visual Studio. The compilation process can take more than an hour. As I do with all such time-consuming developer setups, I’ve scripted the process. In this case, I’ve scripted the process as a batch file that is meant to be invoked from a Visual Studio 2022 developer prompt with administrative privileges. You can find a copy of the batch file [here][1]: 
