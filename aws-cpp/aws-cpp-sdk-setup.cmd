@@ -48,7 +48,7 @@ echo  [34;42mInstall Debug Static Complete[0m
 type ..\ansi\release.ans
 timeout 2
 cmake ".." -DCMAKE_BUILD_TYPE=Release  -G "Visual Studio 17 2022" -DBUILD_SHARED_LIBS="ON" -A x64 -DENABLE_TESTING="OFF" -DFORCE_SHARED_CRT="OFF" -DCMAKE_INSTALL_PREFIX=%InstallFolder%\ReleaseShared
-echo [34;42mRelease Static Project Build Complete[0m
+echo [34;42mRelease Shared Project Build Complete[0m
 cmake --build . --config=Release
 echo [34;42mRelease Shared Build Complete[0m
 cmake --install . --config=Release
