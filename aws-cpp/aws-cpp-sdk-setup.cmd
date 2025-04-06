@@ -28,6 +28,8 @@ mkdir sdk_build
 cd sdk_build
 REM cmake ".." -DCMAKE_BUILD_TYPE=Debug  -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=%InstallFolder%
 
+type ..\ansi\debug.ans
+timeout 2
 cmake ".." -DCMAKE_BUILD_TYPE=Debug  -G "Visual Studio 17 2022" -DBUILD_SHARED_LIBS="ON" -A x64 -DENABLE_TESTING="OFF" -DFORCE_SHARED_CRT="OFF" -DCMAKE_INSTALL_PREFIX=%InstallFolder%\DebugShared
 echo [34;42mDebug Shared Project Build Complete[0m
 cmake --build . --config=Debug
@@ -42,9 +44,10 @@ echo [34;42mDebug Static Build Complete[0m
 cmake --install . --config=Debug
 echo  [34;42mInstall Debug Static Complete[0m
 
-
+type ..\ansi\release.ans
+timeout 2
 cmake ".." -DCMAKE_BUILD_TYPE=Release  -G "Visual Studio 17 2022" -DBUILD_SHARED_LIBS="ON" -A x64 -DENABLE_TESTING="OFF" -DFORCE_SHARED_CRT="OFF" -DCMAKE_INSTALL_PREFIX=%InstallFolder%\ReleaseShared
-echo [34;42mRelease Static Project Build Complete[0m
+echo [34;42mRelease Shared Project Build Complete[0m
 cmake --build . --config=Release
 echo [34;42mRelease Shared Build Complete[0m
 cmake --install . --config=Release
@@ -52,7 +55,7 @@ echo  [34;42mInstall Release Shared Complete[0m
 
 
 cmake ".." -DCMAKE_BUILD_TYPE=Debug  -G "Visual Studio 17 2022" -DBUILD_SHARED_LIBS="OFF" -A x64 -DENABLE_TESTING="OFF" -DFORCE_SHARED_CRT="ON" -DCMAKE_INSTALL_PREFIX=%InstallFolder%\ReleaseStatic
-echo [34;42mRelease Static Project Build Complete[0m
+echo [34;42mRelease Shared  Project Build Complete[0m
 cmake --build . --config=Release
 echo [34;42mRelease Static Build Complete[0m
 cmake --install . --config=Release
