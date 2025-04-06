@@ -1,4 +1,4 @@
-ECHO OFF
+REM ECHO OFF
 CLS
 SETLOCAL ENABLEEXTENSIONS
 setlocal EnableDelayedExpansion
@@ -46,6 +46,7 @@ SET depot_tools_path=%ProjectRoot%\google\depot_tools\
 SET windows_ddk_path=%ProjectRoot%\google\temp\windowsddk.exe
 SET chromium_checkout_path=%ProjectRoot%\google\chromium
 SET v8_checkout_path=%ProjectRoot%\google\
+doskey gm=python3 %v8_checkout_path%\v8\tools\dev\gm.py
 
 mkdir %depot_tools_download_folder%
 mkdir %depot_tools_path%
@@ -62,19 +63,19 @@ if not exist "%windows_ddk_path%" (
 )
 
 ECHO expanding build tools
-REM powershell Expand-Archive -LiteralPath %depot_tools_download_path% -DestinationPath %depot_tools_path% -Force
+powershell Expand-Archive -LiteralPath %depot_tools_download_path% -DestinationPath %depot_tools_path% -Force
 
 cd %v8_checkout_path%
 ECHO ___________________________________________________
 ECHO %DepotFolder%
-if not exist "%DepotFolder%" (
+REM if not exist "%DepotFolder%" (
 	ECHO Downloading build files
-	REM git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
-	powershell Invoke-WebRequest -Uri %depot_tools_source% -OutFile %depot_tools_download_path%
-)
+	git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+	REM powershell Invoke-WebRequest -Uri %depot_tools_source% -OutFile %depot_tools_download_path%
+REM )
 ECHO ___________________________________________________
 
-
+call gclient.bat
 call gclient.bat update
 call gclient.bat sync
 
@@ -82,7 +83,7 @@ cd %v8_checkout_path%
 call fetch --nohistory v8
 cd v8
 call git fetch --tags
-call git checkout 11.9.99
+call git checkout 13.7.9
 
 
 ECHO.>SuggestedBuildOptions.txt
@@ -96,7 +97,7 @@ ECHO v8_use_external_startup_data = false>>SuggestedBuildOptions.txt
 ECHO is_component_build = false>>SuggestedBuildOptions.txt
 ECHO is_clang = false>>SuggestedBuildOptions.txt
 
-CLS
+REM CLS
 ECHO.
 ECHO To build v8 x64 for release, run the following command
 ECHO. 
@@ -110,7 +111,9 @@ TIMEOUT 60
 REM notepad tools\dev\gm.py
 ECHO Performing x64 (Intel Architecture) builds
 call python3 tools\dev\gm.py x64.release
+call ninja -C out\x64.release v8_monolith
 call python3 tools\dev\gm.py x64.debug
+call ninja -C out\x64.debug v8_monolith
 
 ECHO Performing ARM64 builds
 call python3 tools\dev\gm.py arm64.release
