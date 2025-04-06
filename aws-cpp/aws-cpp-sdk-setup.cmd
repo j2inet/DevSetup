@@ -9,7 +9,7 @@ set InstallFolder=%InstallDrive%\shares\projects\amazon\aws-cpp-sdk-lib
 
 
 type ..\ansi\j2i-256.ans
-
+timeout 3
 
 ECHO For more information on this procedure, see https://docs.aws.amazon.com/sdk-for-cpp/
 pushd
