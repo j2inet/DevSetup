@@ -23,10 +23,11 @@ call fetch chromium
 REM gclient sync -D --force --reset
 
 gn gen out\Default 
+gn gen out\v8Release --args="is_component_build=false is_debug=false symbol_level=1 v8_enable_object_print=true v8_enable_disassembler=true target_cpu=\"x64\" v8_static_library = true v8_use_external_startup_data=false v8_monolithic=true"
+gn gen out\v8Debug --args="is_component_build=false is_debug=true  symbol_level=1 v8_enable_object_print=true v8_enable_disassembler=true target_cpu=\"x64\" v8_static_library = true v8_use_external_startup_data=false v8_monolithic=true"
+
 gn gen out\ChromeDebug --args="is_debug=true"
 gn gen out\ChromeRelease --args="is_debug=false symbol_level=1"
-gn gen out\v8Debug --args="is_component_build=false is_debug=true"
-gn gen out\v8Release --args="is_component_build=false is_debug=false symbol_level=1"
 
 
 autoninja -C out\Default base
