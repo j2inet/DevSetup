@@ -1,9 +1,15 @@
+
+ECHO ON
 SET drive=c:
 set googlePath=%drive%\shares\projects\google\
 SET VS_EDITION=Community
 SET NINJA_SUMMARIZE_BUILD=1
 
 git config --global core.longpaths true
+git config --global core.autocrlf false
+git config --global core.filemode false
+git config --global core.fscache true
+git config --global core.preloadindex true
 
 
 %drive%
@@ -20,7 +26,9 @@ call gclient
 popd
 mkdir chromium && cd chromium
 call fetch chromium
-REM gclient sync -D --force --reset
+gclient sync -D --force --reset
+
+cd src
 
 gn gen out\Default 
 gn gen out\v8Release --args="is_component_build=false is_debug=false symbol_level=1 v8_enable_object_print=true v8_enable_disassembler=true target_cpu=\"x64\" v8_static_library = true v8_use_external_startup_data=false v8_monolithic=true"
