@@ -42,3 +42,4 @@ call fetch chromium
 call gclient sync -D --force --reset
 ECHO Finished checkout of chromium at %TIME% >> %googlePath%build_log.txt
 
+call build-chromium-and-v8.cmd
