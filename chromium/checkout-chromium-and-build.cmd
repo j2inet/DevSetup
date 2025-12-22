@@ -1,6 +1,6 @@
 
 ECHO ON
-timeout /t 2100 /nobreak 
+timeout /t 80 /nobreak 
 SET drive=c:
 set googlePath=%drive%\shares\projects\google\
 SET VS_EDITION=Community
@@ -36,14 +36,13 @@ call gclient
 popd
 mkdir chromium && cd chromium
 call fetch chromium
-gclient sync -D --force --reset
+call gclient sync -D --force --reset
 
 cd src
 
 gn gen out\Default 
 gn gen out\v8Release --args="is_component_build=false is_debug=false symbol_level=1 v8_enable_object_print=true v8_enable_disassembler=true target_cpu=\"x64\" v8_static_library = true v8_use_external_startup_data=false v8_monolithic=true"
 gn gen out\v8Debug --args="is_component_build=false is_debug=true  symbol_level=1 v8_enable_object_print=true v8_enable_disassembler=true target_cpu=\"x64\" v8_static_library = true v8_use_external_startup_data=false v8_monolithic=true"
-
 gn gen out\ChromeDebug --args="is_debug=true"
 gn gen out\ChromeRelease --args="is_debug=false symbol_level=1"
 
