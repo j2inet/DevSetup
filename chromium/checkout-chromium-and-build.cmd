@@ -1,6 +1,6 @@
 
 ECHO ON
-timeout /t 80 /nobreak 
+timeout /t 8 /nobreak 
 
 SET drive=c:
 set googlePath=%drive%\shares\projects\google\
