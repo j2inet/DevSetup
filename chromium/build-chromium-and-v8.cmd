@@ -22,7 +22,7 @@ ECHO Finished configuration of Chrome with Release options at %TIME% >> %googleP
 
 
 ECHO Starting build of chromium with Default options at %TIME% >> %googlePath%build_log.txt
-autoninja -C out\Default base %JOBS_PARAMETER%
+call autoninja -C out\Default base %JOBS_PARAMETER%
 ECHO Finished build of chromium with Default options at %TIME% >> %googlePath%build_log.txt
 
 ECHO Starting build of Chrome with Debug options at %TIME% >> %googlePath%build_log.txt
@@ -30,15 +30,15 @@ autoninja -C out\ChromeDebug chrome %JOBS_PARAMETER%
 ECHO Finished build of Chrome with Debug options at %TIME% >> %googlePath%build_log.txt
 
 ECHO Starting build of Chrome with Release options at %TIME% >> %googlePath%build_log.txt
-autoninja -C out\ChromeRelease chrome %JOBS_PARAMETER%
+call autoninja -C out\ChromeRelease chrome %JOBS_PARAMETER%
 ECHO Finished build of Chrome with Release options at %TIME% >> %googlePath%build_log.txt
 
 ECHO Starting build of v8 with Debug options at %TIME% >> %googlePath%build_log.txt
-autoninja -C out\v8Debug v8_monolith %JOBS_PARAMETER%
+call autoninja -C out\v8Debug v8_monolith %JOBS_PARAMETER%
 ECHO Finished build of v8 with Debug options at %TIME% >> %googlePath%build_log.txt
 
 ECHO Starting build of v8 with Release options at %TIME% >> %googlePath%build_log.txt
-autoninja -C out\v8Release v8_monolith %JOBS_PARAMETER%
+call autoninja -C out\v8Release v8_monolith %JOBS_PARAMETER%
 ECHO Finished build of v8 with Release options at %TIME% >> %googlePath%build_log.txt
 
 popd
